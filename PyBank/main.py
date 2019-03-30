@@ -11,12 +11,10 @@ with open(csvfile_path, newline="") as csvfile:
     profit_loss=[]
     for row in csvreder:
         profit_loss.append(row[1])
-        min_value= min(profit_loss)
-        max_value= max(profit_loss)
         number_of_months= len(profit_loss)
         total+=int(row[1])
         averag = int(total/number_of_months)
-        
+
 print("Financial Analysis")
 print("------------------------")
 print(" Total Months: " + str(number_of_months))
