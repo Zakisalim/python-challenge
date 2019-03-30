@@ -20,3 +20,10 @@ print("------------------------")
 print(" Total Months: " + str(number_of_months))
 print("Total: $" + str(total))
 print("Averag Change: " + str(averag))
+
+output_path = os.path.join("PyBank/", "new.csv")
+with open(output_path, 'w', newline='') as csvfile:
+    csvwriter = csv.writer(csvfile, delimiter=' ')
+    csvwriter.writerow([number_of_months])
+    csvwriter.writerow([total])
+    csvwriter.writerow([averag])

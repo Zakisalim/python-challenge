@@ -1,33 +1,37 @@
 import csv
 import os
-import collections
-csvfile_path= os.path.join("PyPoll/","election_data.csv")
+csvfile_path= os.path.join("PyPoll\","election_data.csv")
 with open(csvfile_path, newline="") as csvfile:
     csvreder=csv.reader(csvfile, delimiter=",")
     headers=next(csvreder)
     voters= []
     canadidates=[]
+    candiate_name=[]
     count_khan=0
     count_correy=0
     count_li=0
     for row in csvreder:
         voters.append(row[0])
         total_number= len(voters)
-        canadidates.append(row[2])
-        count_khan= canadidates.count("khan")
-        count_correy=canadidates.count("correy")
-        count_li=canadidates.count("li")
-        #if row[2]=="khan":
-        #    count_khan=count_khan+1
-        #elif row[2]=="correy":
-            #count_correy=count_correy+1
-        ##elif row[2]=="li":
-            #count_li=count_li+1
-
+        canadidate_name=row[2]
+        if candiate_name not in candiates:
+            canadidates.append(candiate_name)
+            candiate_votes[candiate_name]=0
+            candiate_votes=candiate_votes+1
+            percent= candiate_votes/total_number
 
 print("  Election Results ")
 print("-----------------------")
 print("Total Votes: " + str(total_number))
-print(count_khan)
-print(count_correy)
-print(count_li)
+for candiates in candiates_votes:
+    print(candiate_name, percent+"%", "("+candiate_votes+")")
+
+output_path = os.path.join("PyPoll/", "output", "new.csv")
+with open(output_path, 'w', newline='') as csvfile:
+    csvwriter = csv.writer(csvfile, delimiter=' ')
+
+output_path = os.path.join("PyPoll/", "new.csv")
+with open(output_path, 'w', newline='') as csvfile:
+    csvwriter = csv.writer(csvfile, delimiter=' ')
+    csvwriter.writerow([total_number])
+    csvwriter.writerow([candiate_name],[percent], [candiate_votes])
